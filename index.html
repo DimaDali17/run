@@ -43,14 +43,14 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
 </head><body>
 <div class="wrap">
   <header>
-    <h1>Как менялся ассортимент: накопительно по группам</h1>
-    <p class="sub">Wildberries, июль 2021 — сентябрь 2026. Группы — из колонки «Кратко» вашего справочника, где она пустая — «Предмет». Накопительный итог с начала продаж, топ-20 на каждый месяц. Наведите на название, чтобы увидеть артикулы группы.</p>
+    <h1>Заказы по ассортименту: накопительно по группам</h1>
+    <p class="sub">Wildberries, июль 2021 — сентябрь 2026. Группы — из колонки «Кратко» вашего справочника, где она пустая — «Предмет». Показаны заказы (не выкупы), накопительный итог с начала продаж, топ-20 на каждый месяц. Наведите на название, чтобы увидеть артикулы группы.</p>
   </header>
   <div class="controls">
     <button class="play" id="play">▶ Пуск</button>
     <div class="seg" role="group" aria-label="Показатель">
-      <button id="v-rub" aria-pressed="true">Рубли</button>
-      <button id="v-pcs" aria-pressed="false">Штуки</button>
+      <button id="v-rub" aria-pressed="true">Заказы, ₽</button>
+      <button id="v-pcs" aria-pressed="false">Заказы, шт</button>
     </div>
     <div class="seg" role="group" aria-label="Скорость">
       <button id="s-1" aria-pressed="false">×1</button>
@@ -60,7 +60,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline
   </div>
   <div class="timeline"><span class="tl-l" id="tl0"></span><input type="range" id="slider" min="0" step="0.01" aria-label="Месяц"><span class="tl-l" id="tl1"></span></div>
   <div class="stage">
-    <div class="total" id="totalBox">Всего с начала<b id="total"></b></div>
+    <div class="total" id="totalBox">Всего заказов с начала продаж<b id="total"></b></div>
     <div class="bars" id="bars"></div>
     <div class="stamp"><span id="stamp"></span><small id="stampSub"></small></div>
   </div>
@@ -113,7 +113,7 @@ function render(){
     e.bar.style.width=(v/max*82)+"%";e.val.textContent=fmt(v)});
   const mi=Math.round(t);
   document.getElementById("stamp").textContent=fmtMonth(mi);
-  document.getElementById("stampSub").textContent="с начала продаж";document.getElementById("note").textContent=metric==="rub"?"Рубли: «Сумма заказов минус комиссия WB, руб.» Тестовые и неопознанные позиции исключены.":"Штуки: «Заказано, шт.» Тестовые и неопознанные позиции исключены.";
+  document.getElementById("stampSub").textContent="заказы с начала продаж";document.getElementById("note").textContent=metric==="rub"?"Рубли: «Сумма заказов минус комиссия WB, руб.» Тестовые и неопознанные позиции исключены.":"Штуки: «Заказано, шт.» Тестовые и неопознанные позиции исключены.";
   document.getElementById("total").textContent=fmt(tot);
   slider.value=t;
 }
